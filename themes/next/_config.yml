@@ -931,6 +931,14 @@ vendors:
   # Example: https://cdn.jsdelivr.net/npm/valine@1.1.8/dist/Valine.min.js
   valine:
 
+gitalk:
+  enable: true
+  githubID: anotherten   
+  repo: anotherten.github.io
+  ClientID: 3d8c7ed0c0ef37eb0293
+  ClientSecret: 20ce0535fdaf163aa5a9b41a096764df090633d7
+  adminUser: 15086799777@139.com
+  distractionFreeMode: true
 
 # Assets
 css: css
