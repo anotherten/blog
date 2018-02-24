@@ -1,4 +1,4 @@
-{% if page.comments && theme.gitalk.enable %}
+{% if theme.gitalk.enable %}
   <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
   <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
    <script type="text/javascript">
@@ -8,7 +8,7 @@
           repo: '{{ theme.gitalk.repo }}',
           owner: '{{ theme.gitalk.githubID }}',
           admin: ['{{ theme.gitalk.adminUser }}'],
-          id: location.pathname,
+          id: page.title,
           distractionFreeMode: '{{ theme.gitalk.distractionFreeMode }}'
         })
         gitalk.render('gitalk-container')           
