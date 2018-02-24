@@ -933,11 +933,11 @@ vendors:
 
 gitalk:
   enable: true
-  githubID: 15086799777@139.com   
+  githubID: anotherten   
   repo: anotherten.github.io
   ClientID: 3d8c7ed0c0ef37eb0293
   ClientSecret: 20ce0535fdaf163aa5a9b41a096764df090633d7
-  adminUser: 15086799777@139.com
+  adminUser: anotherten
   distractionFreeMode: true
 
 # Assets
