@@ -15,7 +15,7 @@ install:
 
 script:
   - hexo clean
-  - hexo d -g
+  - hexo g
 
 after_script:
   - git clone https://${GH_REF} .deploy_git
@@ -24,6 +24,7 @@ after_script:
   - cd ../
   - mv .deploy_git/.git/ ./public/
   - cd ./public
+  - ls
   - git config user.name "anotherten"
   - git config user.email "15086799777@139.com" 
   - git add .
