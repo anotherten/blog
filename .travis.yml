@@ -15,6 +15,7 @@ install:
 
 script:
   - hexo clean
+  - hexo d
   - hexo g
 
 after_script:
