@@ -24,6 +24,8 @@ after_script:
   - cd ../
   - mv .deploy_git/.git/ ./public/
   - cd ./public
+  - cat>>CNAME
+  - anotherten.top
   - ls
   - git config user.name "anotherten"
   - git config user.email "15086799777@139.com" 
