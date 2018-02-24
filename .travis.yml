@@ -15,7 +15,7 @@ install:
 
 script:
   - hexo clean
-  - hexo g
+  - hexo d -g
 
 after_script:
   - git clone https://${GH_REF} .deploy_git
@@ -27,7 +27,7 @@ after_script:
   - git config user.name "anotherten"
   - git config user.email "15086799777@139.com" 
   - git add .
-  - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`" 
+  - git commit -m "Travis CI Auto Builder" 
   - git push --force --quiet "https://${Travis_Token}@${GH_REF}" master:master
 
 branches:
