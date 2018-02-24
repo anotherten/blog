@@ -134,10 +134,10 @@ menu_settings:
 # ---------------------------------------------------------------
 
 # Schemes
-scheme: Pisces
+#scheme: Pisces
 #scheme: Mist
 #scheme: Pisces
-#scheme: Gemini
+scheme: Gemini
 
 
 # ---------------------------------------------------------------
