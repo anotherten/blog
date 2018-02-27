@@ -21,55 +21,54 @@
     {% set container_class = container_class + 'sidebar-position-' + theme.sidebar.position %}
   {% endif %}
 
+  <div class="headband"></div>
   <div class="{{ container_class }} {% block page_class %}{% endblock %}">
-    <div class="headband"></div>
+    <div class="index-content">
+        <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+          <div class="header-inner"> {{ partial('_partials/header.swig', {}, {cache: theme.cache.enable}) }} </div>
+        </header>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-	  <h1>hexo博客</h1>
-      <div class="header-inner"> {{ partial('_partials/header.swig', {}, {cache: theme.cache.enable}) }} </div>
-    </header>
+        {% include '_third-party/github-banner.swig' %}
 
-    {% include '_third-party/github-banner.swig' %}
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            {% block content %}{% endblock %}
+        <main id="main" class="main">
+          <div class="main-inner">
+            <div class="content-wrap">
+              <div id="content" class="content">
+                {% block content %}{% endblock %}
+              </div>
+              {% include '_partials/comments.swig' %}
+            </div>
+            {% if theme.sidebar.display !== 'remove' %}
+              {% block sidebar %}{% endblock %}
+            {% endif %}
           </div>
-          {% include '_partials/comments.swig' %}
-        </div>
-        {% if theme.sidebar.display !== 'remove' %}
-          {% block sidebar %}{% endblock %}
+        </main>
+
+        <footer id="footer" class="footer">
+          <div class="footer-inner">
+            {{ partial('_partials/footer.swig', {}, {cache: theme.cache.enable}) }}
+            {% include '_third-party/analytics/analytics-with-widget.swig' %}
+            {% block footer %}{% endblock %}
+          </div>
+        </footer>
+
+        {% if not theme.sidebar.b2t %}
+          <div class="back-to-top">
+            <i class="fa fa-arrow-up"></i>
+            {% if theme.sidebar.scrollpercent %}
+              <span id="scrollpercent"><span>0</span>%</span>
+            {% endif %}
+          </div>
         {% endif %}
-      </div>
-    </main>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        {{ partial('_partials/footer.swig', {}, {cache: theme.cache.enable}) }}
-        {% include '_third-party/analytics/analytics-with-widget.swig' %}
-        {% block footer %}{% endblock %}
-      </div>
-    </footer>
-
-    {% if not theme.sidebar.b2t %}
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        {% if theme.sidebar.scrollpercent %}
-          <span id="scrollpercent"><span>0</span>%</span>
+        {% if theme.needmoreshare2.enable and theme.needmoreshare2.float.enable %}
+          <div id="needsharebutton-float">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
         {% endif %}
-      </div>
-    {% endif %}
-
-    {% if theme.needmoreshare2.enable and theme.needmoreshare2.float.enable %}
-      <div id="needsharebutton-float">
-        <span class="btn">
-          <i class="fa fa-share-alt" aria-hidden="true"></i>
-        </span>
-      </div>
-    {% endif %}
-
+    </div>
   </div>
 
   {% include '_scripts/vendors.swig' %}

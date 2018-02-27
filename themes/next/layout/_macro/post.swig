@@ -10,6 +10,10 @@
     {% set post_class = post_class + ' ' + 'post-sticky' %}
   {% endif %}
 
+  {% if is_index %}
+    {% set post_class = post_class + ' ' + 'index_post' %}
+  {% endif %}
+
   {% if theme.reading_progress.enable && not is_index %}
     <div class="reading-progress-bar"></div>
   {% endif %}
@@ -19,6 +23,9 @@
   {### POST BLOCK ###}
   {##################}
   <div class="post-block">
+    {% if is_index %}
+      <span class="index-time">{{ date(post.date, config.date_format) }}</span>
+    {% endif  %}
     <link itemprop="mainEntityOfPage" href="{{ config.url }}{{ url_for(post.path) }}">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -65,6 +72,7 @@
         {% endif %}
 
         <div class="post-meta">
+          {% if not is_index %}
           <span class="post-time">
             {% if theme.post_meta.created_at %}
               <span class="post-meta-item-icon">
@@ -101,7 +109,7 @@
             #}</time>
             {% endif %}
           </span>
-
+          {% endif  %}
           {% if post.categories and post.categories.length and theme.post_meta.categories %}
             <span class="post-category" >
             {% if theme.post_meta.created_at or theme.post_meta.updated_at %}
@@ -273,6 +281,7 @@
     {#################}
     {### POST BODY ###}
     {#################}
+    {% if not is_index %}
     <div class="post-body{% if theme.han %} han-init-context{% endif %}{% if post.direction && post.direction.toLowerCase() === 'rtl' %} rtl{% endif %}" itemprop="articleBody">
 
       {# Gallery support #}
@@ -340,6 +349,7 @@
       {% include 'post-related.swig' with { post: post } %}
     {% endif %}
 
+    {% endif %}
     {#####################}
     {### END POST BODY ###}
     {#####################}

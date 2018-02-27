@@ -184,8 +184,8 @@ links_icon: link
 links_title: Links
 links_layout: block
 #links_layout: inline
-#links:
-  #Title: http://example.com/
+links:
+  GKL2013: http://gkl2013.top
 
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.gif
@@ -678,8 +678,14 @@ algolia_search:
 
 # Local search
 # Dependencies: https://github.com/theme-next/hexo-generator-searchdb
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
+  
 local_search:
-  enable: false
+  enable: ture
   # if auto, trigger search by changing input
   # if manual, trigger search by pressing enter key or search button
   trigger: auto
