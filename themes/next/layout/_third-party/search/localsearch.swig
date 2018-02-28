@@ -70,7 +70,7 @@
         success: function(res) {
           // get the contents from search data
           isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
+          // $('.popup').detach().appendTo('.header-inner');
           var datas = isXml ? $("entry", res).map(function() {
             return {
               title: $("title", this).text(),

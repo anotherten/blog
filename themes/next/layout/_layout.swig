@@ -20,57 +20,68 @@
   {% if theme.sidebar.position %}
     {% set container_class = container_class + 'sidebar-position-' + theme.sidebar.position %}
   {% endif %}
-
-  <div class="headband"></div>
-  <div class="{{ container_class }} {% block page_class %}{% endblock %}">
-    <div class="index-content">
-        <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-          <div class="header-inner"> {{ partial('_partials/header.swig', {}, {cache: theme.cache.enable}) }} </div>
-        </header>
-
-        {% include '_third-party/github-banner.swig' %}
-
-        <main id="main" class="main">
-          <div class="main-inner">
-            <div class="content-wrap">
-              <div id="content" class="content">
-                {% block content %}{% endblock %}
+<div id="d1">
+  <div id="d2">
+    <div class="headband">
+          <div class="menu-item menu-item-search">
+            {% if theme.swiftype_key %}
+              <a href="javascript:;" class="st-search-show-outputs">
+            {% elseif theme.local_search.enable || theme.algolia_search.enable %}
+              <a href="javascript:;" class="popup-trigger">
+            {% endif %}
+              {% if theme.menu_settings.icons %}
+                <i class="menu-item-icon fa fa-search fa-fw"></i> <br />{#
+            #}{% endif %}{#
+            #}{{ __('menu.search') }}{#
+          #}</a>
+          </div>
+    </div>
+    {% block headband %}{% endblock %}
+    <div class="{{ container_class }} {% block page_class %}{% endblock %}">
+      <div class="index-content">
+          {% include '_third-party/github-banner.swig' %}
+          <main id="main" class="main">
+            <div class="main-inner">
+              <div class="content-wrap">
+                <div id="content" class="content">
+                  {% block content %}{% endblock %}
+                </div>
+                {% include '_partials/comments.swig' %}
               </div>
-              {% include '_partials/comments.swig' %}
+              {% if theme.sidebar.display !== 'remove' %}
+                {% block sidebar %}{% endblock %}
+              {% endif %}
             </div>
-            {% if theme.sidebar.display !== 'remove' %}
-              {% block sidebar %}{% endblock %}
-            {% endif %}
-          </div>
-        </main>
+          </main>
 
-        <footer id="footer" class="footer">
-          <div class="footer-inner">
-            {{ partial('_partials/footer.swig', {}, {cache: theme.cache.enable}) }}
-            {% include '_third-party/analytics/analytics-with-widget.swig' %}
-            {% block footer %}{% endblock %}
-          </div>
-        </footer>
+          <footer id="footer" class="footer">
+            <div class="footer-inner">
+              {{ partial('_partials/footer.swig', {}, {cache: theme.cache.enable}) }}
+              {% include '_third-party/analytics/analytics-with-widget.swig' %}
+              {% block footer %}{% endblock %}
+            </div>
+          </footer>
 
-        {% if not theme.sidebar.b2t %}
-          <div class="back-to-top">
-            <i class="fa fa-arrow-up"></i>
-            {% if theme.sidebar.scrollpercent %}
-              <span id="scrollpercent"><span>0</span>%</span>
-            {% endif %}
-          </div>
-        {% endif %}
+          {% if not theme.sidebar.b2t %}
+            <div class="back-to-top">
+              <i class="fa fa-arrow-up"></i>
+              {% if theme.sidebar.scrollpercent %}
+                <span id="scrollpercent"><span>0</span>%</span>
+              {% endif %}
+            </div>
+          {% endif %}
 
-        {% if theme.needmoreshare2.enable and theme.needmoreshare2.float.enable %}
-          <div id="needsharebutton-float">
-            <span class="btn">
-              <i class="fa fa-share-alt" aria-hidden="true"></i>
-            </span>
-          </div>
-        {% endif %}
+          {% if theme.needmoreshare2.enable and theme.needmoreshare2.float.enable %}
+            <div id="needsharebutton-float">
+              <span class="btn">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+              </span>
+            </div>
+          {% endif %}
+      </div>
     </div>
   </div>
-
+</div>
   {% include '_scripts/vendors.swig' %}
   {% include '_scripts/commons.swig' %}
 
